@@ -1,0 +1,3 @@
+export function NewsPanel({ items }: { items: {time:string;label:string;impact:string;countdown:string}[] }) {
+  return <div className="space-y-2">{items.map((n) => <div key={n.label} className="rounded-xl border border-white/[0.05] bg-white/[0.02] p-3"><div className="flex items-start justify-between gap-2"><div><div className="text-[10px] text-slate-500">{n.time}</div><div className="mt-1 text-xs font-medium text-slate-200">{n.label}</div></div><span className={`rounded-md px-2 py-1 text-[9px] font-bold ${n.impact === 'HIGH' ? 'bg-rose-400/10 text-rose-300' : 'bg-amber-400/10 text-amber-300'}`}>{n.impact}</span></div><div className="mt-2 text-[10px] text-slate-500">Starts in <span className="font-mono text-slate-300">{n.countdown}</span></div></div>)}</div>
+}

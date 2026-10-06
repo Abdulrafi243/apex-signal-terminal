@@ -1,0 +1,3 @@
+export function Watchlist({ rows }: { rows: string[][] }) {
+  return <div className="space-y-1">{rows.map((r) => <div key={r[0]} className="grid grid-cols-[1.2fr_1fr_.8fr_.55fr_.7fr] items-center gap-2 rounded-xl px-3 py-2.5 text-xs hover:bg-white/[0.025]"><div className="font-semibold text-white">{r[0]}</div><div className="text-slate-300">{r[1]}</div><div className={r[2].startsWith('+') ? 'text-emerald-400' : 'text-rose-400'}>{r[2]}</div><div className="text-slate-400">{r[3]}</div><div><span className={`rounded-md px-2 py-1 text-[9px] font-bold ${r[4] === 'LONG' ? 'bg-emerald-400/10 text-emerald-300' : r[4] === 'SHORT' ? 'bg-rose-400/10 text-rose-300' : 'bg-white/[0.05] text-slate-400'}`}>{r[4]}</span></div></div>)}</div>
+}
