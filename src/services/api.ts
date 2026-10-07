@@ -1,6 +1,15 @@
-const configuredBase = String(import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '')
+const rawConfiguredBase = String(import.meta.env.VITE_API_BASE_URL || '').trim()
 const DEV_DIRECT_BASE = 'http://127.0.0.1:8000/api/v1'
 const RELATIVE_BASE = '/api/v1'
+
+function normalizeApiBase(value:string) {
+  const cleaned = value.replace(/\/+$/, '')
+  if (!cleaned) return ''
+  if (/\/api\/v1$/i.test(cleaned)) return cleaned
+  return `${cleaned}/api/v1`
+}
+
+const configuredBase = normalizeApiBase(rawConfiguredBase)
 
 function apiCandidates() {
   if (configuredBase) return [configuredBase]
